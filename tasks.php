@@ -20,8 +20,11 @@ if( isset($_SESSION["login"])){
             $color = filter_input(INPUT_POST, 'color');
             addClass($_SESSION['userID'], $className, $color);
         }
+        if($action == 'addTask'){
+            echo filter_input(INPUT_POST, 'class');
+        }
     }
-    
+    $classes = getClasses($_SESSION["userID"]);
     $taskData = getTasks($_SESSION["userID"]);
     
 }
@@ -63,7 +66,7 @@ else {
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <span class="nav-link text-success" onclick="addFunction()">Add Class</span>
+                <span class="nav-link text-success" onclick="addClass()">Add Class</span>
             </li>
             <li class="nav-item d-block d-ml-none d-lg-none d-xl-none">
                 <a class="nav-link text-danger" href="index.php?action=false">Logout</a>
@@ -80,7 +83,7 @@ else {
     <div id="top" class="row">
         <h1 class='mt-4 col-4' style="border:red 2px solid;">Tasks</h1>
         <span class="offset-6 d-inline-block mt-4 text-success" style="font-size:3em;">
-            <i class="fad fa-space-station-moon-alt" onclick="alert();"></i>
+            <i class="fad fa-space-station-moon-alt" onclick="addTask()"></i>
             <p style="font-size:16px; margin:0;padding:0;">Add Task</p>
         </span>
     </div>
@@ -101,7 +104,7 @@ else {
     </div>
     <?php    endforeach; ?>
     
-        
+<!--   ~~~~~~~~~MODALS~~~~~~~~~~       -->
     
     <div id="addClass" class="modal">
 
@@ -115,6 +118,48 @@ else {
                         <div class="form-row">
                             <input type="hidden" name="action" value ="addClass">
                             <label class="control-label" for="className">class Name:</label>
+                            <input type="text" class="form-control" style="border-color: #5380b7;" id="className" placeholder="Enter Item Name" name="className" >
+                            <div class="invalid-feedback">Please type your User Name.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label class="control-label" for="color">Color (stay light):</label>
+                            <input type="color" class="form-control" style="border-color: #5380b7;" id="color" name="color" >
+                            <div class="invalid-feedback">Please enter a unit price. Only use numbers and one decimal point</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success"  value="Add Item" id="submitAdd">
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <div id="addTask" class="modal">
+
+        <div class="modal-content mt-4">
+            <div>
+                <span class="close">&times;</span>
+            </div>
+            <form action="../ToDo/tasks.php" method="post">
+                <input type="hidden" name="action" value ="addTask">
+                <div class="modal-body container-fluid">
+                    <div class="form-group">
+                        <label for="class">Example select</label>
+                        <select class="form-control" id="class" name='class'>
+                            <?php foreach ($classes AS $class): ?>
+                          <option value='<?php echo $class['classID']; ?>'><?php echo $class['className'];?></option>
+                          <?php endforeach;?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            
+                            <label class="control-label" for="className">class</label>
                             <input type="text" class="form-control" style="border-color: #5380b7;" id="className" placeholder="Enter Item Name" name="className" >
                             <div class="invalid-feedback">Please type your User Name.</div>
                         </div>

@@ -62,13 +62,13 @@
     function getClasses($userID){
         global $db;
         
-        $stmt = $db->prepare("SELECT className, color FROM ToDo_Class WHERE userID = :userID");
+        $stmt = $db->prepare("SELECT classID, className, color FROM ToDo_Class WHERE userID = :userID");
         
         $binds = array(
             ":userID"=>$userID
         );
         
-        if($stmt->execute($binds) && $stmt-rowCount()>0){
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         return false;
