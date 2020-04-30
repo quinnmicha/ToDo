@@ -27,10 +27,18 @@ else {
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script type="text/javascript" src='../ToDo/model/validation.js'></script>
-  
+<style>
+   .week{
+     padding:2%;
+     margin-top:20px;
+     margin-bottom:60px;
+     box-shadow:2px 4px 5px black;
+     background-color:#fcf7f3;
+ }
+ </style>
 </head>
 
-<body>
+<body id="0">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">My Planner</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,9 +64,21 @@ else {
 </nav>
     
 <div class="container">
-    <form method='POST' class='m-auto w-50'>
-        <h1 class='mt-4'>Tasks</h1>
-        
+    <h1 class='mt-4'>Tasks</h1>
+
+    <div class="week">
+        <a href="#0" style="float:right;color:blue;">back to top</a>
+        <h4 id="1">Monday May 4</h4>
+        <p>5 Days Away</p>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" style="color:blue;" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1" style="color:grey;">
+              Tasks go here with even more words than these but these can still be considered words once they are read in a certain light that is only found at the top of mountains in the region of the blue spruce that only grows on those mountains
+            </label>
+        </div>
+
+    </div>
     
     
         
