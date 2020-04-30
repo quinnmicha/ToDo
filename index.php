@@ -12,7 +12,7 @@ if( isset($_SESSION["login"])){
     }
     
     else {
-        //header("Location: ../Recipe/addRecipe.php");
+        header("Location: ../ToDo/tasks.php");
     }
 }
 else if(isPostRequest()){
@@ -23,8 +23,8 @@ else if(isPostRequest()){
         
         $_SESSION['login'] = true;
         $_SESSION['username'] = $login[0]['username'];
-        $_SESSION['userId'] = $login[0]['userId'];
-        //header("Location: ../Recipe/addRecipe.php"); //TO CHANGE TO NEW HOMEPAGE
+        $_SESSION['userId'] = $login[0]['userID'];
+        header("Location: ../ToDo/tasks.php");
     }
 }
 
