@@ -46,7 +46,8 @@
     function getTasks($userID){
         global $db;
         
-        $stmt = $db->prepare("SELECT className, color, noteDate, noteText, noteActive FROM ToDo_Notes AS Notes JOIN ToDo_Class As Class ON Notes.classID = Class.classID WHERE Class.userID = :userID;");
+        //can possibly add group by className to group class assignments together regardless of date
+        $stmt = $db->prepare("SELECT className, color, noteDate, noteText, noteActive FROM ToDo_Notes AS Notes JOIN ToDo_Class As Class ON Notes.classID = Class.classID WHERE Class.userID = :userID ORDER BY noteDate ASC;");
         
         $binds = array(
             ":userID" => $userID
