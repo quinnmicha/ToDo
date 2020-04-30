@@ -91,6 +91,23 @@
         return false;
     }
     
+    function addTask($classID, $noteDate, $noteText){
+        global $db;
+        
+        $stmt->prepare("INSERT INTO ToDo_Notes (classID, noteDate, noteText, noteActive) VALUES (:classID, :noteDate, :noteText, 0)");
+        
+        $binds = array(
+            ":classID"=>$classID,
+            ":noteDate"=>$noteDate,
+            "noteText"=>$noteText
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        return false;
+    }
+    
     
     function isPostRequest() {
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
