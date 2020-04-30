@@ -14,8 +14,6 @@ if( isset($_SESSION["login"])){
     }
     
     $taskData = getTasks($_SESSION["userID"]);
-    var_dump($taskData);
-    echo date('l | M j',strtotime($taskData[0]['noteDate']));
     
 }
 
@@ -77,7 +75,7 @@ else {
     <div class="week">
         <a href="#0" style="float:right;color:blue;">back to top</a>
         <h4 id="1"><?php echo date('l | M j',strtotime($task['noteDate'])); ?></h4>
-        <p>5 Days Away</p>
+        <p><?php echo date('z',strtotime($task['noteDate'])) - date('z'); ?> Days Away</p>
 
         <div class="form-check">
             <input class="form-check-input" type="checkbox" style="color:blue;" value="" id="defaultCheck1">
