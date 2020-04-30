@@ -94,7 +94,10 @@
     function addTask($classID, $noteDate, $noteText){
         global $db;
         
-        $stmt->prepare("INSERT INTO ToDo_Notes (classID, noteDate, noteText, noteActive) VALUES (:classID, :noteDate, :noteText, 0)");
+        echo $classID, $noteText;
+        echo $noteDate;
+        
+        $stmt = $db->prepare("INSERT INTO ToDo_Notes (classID, noteDate, noteText, noteActive) VALUES (:classID, :noteDate, :noteText, 0)");
         
         $binds = array(
             ":classID"=>$classID,

@@ -21,9 +21,10 @@ if( isset($_SESSION["login"])){
             addClass($_SESSION['userID'], $className, $color);
         }
         if($action == 'addTask'){
-            $classID = filter_input(INPUT_POST, 'classID');
+            $classID = filter_input(INPUT_POST, 'class');
             $noteDate = filter_input(INPUT_POST, 'date');
             $noteText = filter_input(INPUT_POST, 'task');
+            echo $noteDate;
             addTask($classID, $noteDate, $noteText);
         }
     }
