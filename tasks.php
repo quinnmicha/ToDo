@@ -16,7 +16,9 @@ if( isset($_SESSION["login"])){
     if(isPostRequest()){
         $action = filter_input(INPUT_POST, 'action');
         if($action == 'addClass'){
-            echo filter_input(INPUT_POST, 'color');
+            $className = filter_input(INPUT_POST, 'className');
+            $color = filter_input(INPUT_POST, 'color');
+            addClass($_SESSION['userID'], $className, $color);
         }
     }
     
