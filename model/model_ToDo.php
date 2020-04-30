@@ -43,6 +43,21 @@
         }
     }
     
+    function getTasks($userID){
+        global $db;
+        
+        $stmt = $db->prepare("SELECT className, color, noteDate, noteText, noteActive FROM ToDo_Notes AS Notes JOIN ToDo_Class As Class ON Notes.classID = Class.classID WHERE Class.userID = :userID;");
+        
+        $binds = array(
+            ":userID" => $userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return false;
+    }
+    
     
     function isPostRequest() {
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
