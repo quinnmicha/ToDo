@@ -59,6 +59,23 @@
         return false;
     }
     
+    function addClass($userID, $className, $color){
+        global $db;
+        
+        $stmt= $db->prepare("INSERT INTO ToDo_Class (userID, className, color) VALUES (:userID, :className, :color)");
+        
+        $binds = array(
+            ":userID"=>$userID,
+            ":className"=>$className,
+            ":color"=>$color
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        return false;
+    }
+    
     
     function isPostRequest() {
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
