@@ -86,7 +86,7 @@ else {
 <div class="container">
     <div id="top" class="row">
         <h1 class='mt-4 col-4' style="border:red 2px solid;">Tasks</h1>
-        <span class="offset-6 d-inline-block mt-4 text-success" style="font-size:3em;">
+        <span class="offset-5 d-inline-block mt-4 text-success" style="font-size:3em;">
             <i class="fad fa-space-station-moon-alt" onclick="addTask()"></i>
             <p style="font-size:16px; margin:0;padding:0;">Add Task</p>
         </span>
@@ -95,13 +95,32 @@ else {
     <?php foreach ($taskData as $task): ?>
     <div class="week">
         <a href="#0" style="float:right;color:blue;">back to top</a>
-        <h4 id="1"><?php echo date('l | M j',strtotime($task['noteDate'])); ?></h4>
-        <p><?php echo date('z',strtotime($task['noteDate'])) - date('z'); ?> Days Away</p>
+        <h4 id="1"><?php if($task['noteActive']===0){ echo date('l | M j',strtotime($task['noteDate']));} ?></h4>
+        <p><?php if($task['noteActive']===0){ echo date('z',strtotime($task['noteDate'])) - date('z'); } ?> Days Away</p>
 
         <div class="form-check">
             <input class="form-check-input" type="checkbox" style="color:blue;" value="" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1" style="color:grey;">
-            <?php echo $task['noteText'] ?>  
+            <?php if($task['noteActive']===0){ echo $task['noteText']; } ?>  
+            </label>
+        </div>
+
+    </div>
+    <?php    endforeach; ?>
+    
+    <div class='col-12' style='border:black 2px dashed'></div>
+    <h1>Accomplished</h1>
+    
+    <?php foreach ($taskData as $task): ?>
+    <div class="week">
+        <a href="#0" style="float:right;color:blue;">back to top</a>
+        <h4 id="1"><?php if($task['noteActive']===1){ echo date('l | M j',strtotime($task['noteDate']));} ?></h4>
+        <p><?php if($task['noteActive']===1){ echo date('z',strtotime($task['noteDate'])) - date('z'); } ?> Days Away</p>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" style="color:blue;" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1" style="color:grey;">
+            <?php if($task['noteActive']===1){ echo $task['noteText']; } ?>  
             </label>
         </div>
 
@@ -183,6 +202,10 @@ else {
         </div>
 
     </div>
+
+<script>
+    
+</script>
    
 </div><!--/.container-->
 
