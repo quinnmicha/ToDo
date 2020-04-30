@@ -103,7 +103,7 @@ else {
     
         
     
-    <div id="addModal" class="modal">
+    <div id="addClass" class="modal">
 
         <div class="modal-content mt-4">
             <div>
