@@ -44,8 +44,14 @@ else {
             <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
             </li>
+            <li class="nav-item d-block d-ml-none d-lg-none d-xl-none">
+                <a class="nav-link text-danger" href="#">Logout</a>
+            </li>
             
         </ul>
+    </div>
+    <div class="nav-item col-1 d-none d-ml-block d-lg-block d-xl-block" style="text-align: center;border: red 3px solid; border-radius:10px;">
+        <a class=" text-danger" href="index.php?action=false"><b>Log Out</b></a>
     </div>
 </nav>
     
