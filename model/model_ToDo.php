@@ -59,6 +59,21 @@
         return false;
     }
     
+    function getClasses($userID){
+        global $db;
+        
+        $stmt = $db->prepare("SELECT className, color FROM ToDo_Class WHERE userID = :userID");
+        
+        $binds = array(
+            ":userID"=>$userID
+        );
+        
+        if($stmt->execute($binds) && $stmt-rowCount()>0){
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return false;
+    }
+    
     function addClass($userID, $className, $color){
         global $db;
         
