@@ -4,12 +4,19 @@ include __DIR__ . '/Model/model_ToDo.php';
 
 session_start();
 
+
+
 if( isset($_SESSION["login"])){
     $action=  filter_input(INPUT_GET, 'action');
     if( $action=='false'){
         session_unset();
         session_destroy();
     }
+    
+    $taskData = getTasks($_SESSION["userID"]);
+    var_dump($taskData);
+    echo date('l | M j',strtotime($taskData[0]['noteDate']));
+    
 }
 
 else {
@@ -53,7 +60,7 @@ else {
                 <a class="nav-link" href="#">Pricing</a>
             </li>
             <li class="nav-item d-block d-ml-none d-lg-none d-xl-none">
-                <a class="nav-link text-danger" href="#">Logout</a>
+                <a class="nav-link text-danger" href="index.php?action=false">Logout</a>
             </li>
             
         </ul>
@@ -66,20 +73,21 @@ else {
 <div class="container">
     <h1 class='mt-4'>Tasks</h1>
 
+    <?php foreach ($taskData as $task): ?>
     <div class="week">
         <a href="#0" style="float:right;color:blue;">back to top</a>
-        <h4 id="1">Monday May 4</h4>
+        <h4 id="1"><?php echo date('l | M j',strtotime($task['noteDate'])); ?></h4>
         <p>5 Days Away</p>
 
         <div class="form-check">
             <input class="form-check-input" type="checkbox" style="color:blue;" value="" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1" style="color:grey;">
-              Tasks go here with even more words than these but these can still be considered words once they are read in a certain light that is only found at the top of mountains in the region of the blue spruce that only grows on those mountains
+            <?php echo $task['noteText'] ?>  
             </label>
         </div>
 
     </div>
-    
+    <?php    endforeach; ?>
     
         
    
