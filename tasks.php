@@ -21,7 +21,7 @@ if( isset($_SESSION["login"])){
             addClass($_SESSION['userID'], $className, $color);
         }
         if($action == 'addTask'){
-            echo filter_input(INPUT_POST, 'class');
+            
         }
     }
     $classes = getClasses($_SESSION["userID"]);
@@ -146,10 +146,10 @@ else {
                 <span class="close">&times;</span>
             </div>
             <form action="../ToDo/tasks.php" method="post">
-                <input type="hidden" name="action" value ="addTask">
                 <div class="modal-body container-fluid">
                     <div class="form-group">
-                        <label for="class">Example select</label>
+                        <input type="hidden" name="action" value ="addTask">
+                        <label for="class">Class:</label>
                         <select class="form-control" id="class" name='class'>
                             <?php foreach ($classes AS $class): ?>
                           <option value='<?php echo $class['classID']; ?>'><?php echo $class['className'];?></option>
@@ -158,17 +158,16 @@ else {
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            
-                            <label class="control-label" for="className">class</label>
-                            <input type="text" class="form-control" style="border-color: #5380b7;" id="className" placeholder="Enter Item Name" name="className" >
+                            <label class="control-label" for="date">Date Due:</label>
+                            <input type="date" class="form-control" style="border-color: #5380b7;" id="date" name="date" >
                             <div class="invalid-feedback">Please type your User Name.</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <label class="control-label" for="color">Color (stay light):</label>
-                            <input type="color" class="form-control" style="border-color: #5380b7;" id="color" name="color" >
-                            <div class="invalid-feedback">Please enter a unit price. Only use numbers and one decimal point</div>
+                            <label class="control-label" for="task">Task:</label>
+                            <textarea type="color" class="form-control" style="border-color: #5380b7;" id="task" name="task" ></textarea>
+                            <div class="invalid-feedback">Error MEssage goes in this spot bitch</div>
                         </div>
                     </div>
                     
