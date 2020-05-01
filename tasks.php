@@ -33,6 +33,9 @@ if( isset($_SESSION["login"])){
             echo $noteDate;
             addTask($classID, $noteDate, $noteText);
         }
+        if($action == 'active'){
+            
+        }
         
     }
     $classes = getClasses($_SESSION["userID"]);
@@ -188,9 +191,7 @@ else {
 
     </div>
 
-<script>
-    
-</script>
+<script type='text/javascript' src='model/activePost.js'></script>
    
 </div><!--/.container-->
 
