@@ -8,25 +8,18 @@ session_start();
 
 if( isset($_SESSION["login"])){
     $action=  filter_input(INPUT_GET, 'action');
+    $delete = filter_input(INPUT_GET, 'delete');//classID
     if( $action=='false'){
         session_unset();
         session_destroy();
     }
+    if( $delete=='delete'){
+        deleteClass($delete);
+    }
     
     if(isPostRequest()){
-        $action = filter_input(INPUT_POST, 'action');
-        if($action == 'addClass'){
-            $className = filter_input(INPUT_POST, 'className');
-            $color = filter_input(INPUT_POST, 'color');
-            addClass($_SESSION['userID'], $className, $color);
-        }
-        if($action == 'addTask'){
-            $classID = filter_input(INPUT_POST, 'class');
-            $noteDate = filter_input(INPUT_POST, 'date');
-            $noteText = filter_input(INPUT_POST, 'task');
-            echo $noteDate;
-            addTask($classID, $noteDate, $noteText);
-        }
+        $classes = filter_input(INPUT_POST, 'className');
+        var_dump($classes);
     }
     $classes = getClasses($_SESSION["userID"]);
 }
@@ -89,8 +82,9 @@ else {
     </div>
 
     <div class="mt-4">
-        <form action="../ToDo/tasks.php" method="post">
+        <form action="../ToDo/classes.php" method="post">
             <?php foreach($classes AS $class): ?>
+            <input type='hidden' value='<?php echo $class['classID']; ?>' name='classID'>
             <div class="form-group">
                 <div class="form-row">
                     <input type="hidden" name="action" value ="addClass">
@@ -106,11 +100,13 @@ else {
                     <div class="invalid-feedback">ErroMessage</div>
                 </div>
             </div>
+            <div class='mb-5'>
+                <input type="submit" class="btn btn-success"  value="Change This Class" id="submitAdd">
+                <button class='btn btn-danger ml-4' href='classes.php?delete=<?php echo $class['classID']; ?>'>Delete Class</button>
+            </div>
             <?php endforeach; ?>
 
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-success"  value="Submit Changes" id="submitAdd">
-            </div>
+            
         </form>
     </div>
 

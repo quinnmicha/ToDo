@@ -127,6 +127,22 @@
         return false;
     }
     
+    function editClass(){}
+    function deleteClass($classID){
+        global $db;
+        
+        $stmt= $db->prepare("DELETE FROM ToDo_Class WHERE classID = :classID");
+        
+        $binds = array(
+            "classID"=>$classID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        return false;
+    }
+    
     
     function isPostRequest() {
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
