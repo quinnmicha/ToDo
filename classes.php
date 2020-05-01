@@ -9,8 +9,6 @@ session_start();
 if( isset($_SESSION["login"])){
     $action=  filter_input(INPUT_GET, 'action');
     $delete = filter_input(INPUT_GET, 'delete');//classID
-    echo $action;
-    echo $delete;
     if( $action=='false'){
         session_unset();
         session_destroy();
@@ -110,7 +108,7 @@ else {
             </div>
             <div class='mb-5'>
                 <input type="submit" class="btn btn-success"  value="Change This Class" id="submitAdd">
-                <button class='btn btn-danger ml-4' href='classes.php?action=delete;delete=<?php echo $class['classID']; ?>'>Delete Class</button>
+                <a class='btn btn-danger ml-4' href='classes.php?action=delete&delete=<?php echo $class['classID']; ?>'>Delete Class</a>
             </div>
             
 
