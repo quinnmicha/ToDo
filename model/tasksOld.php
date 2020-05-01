@@ -10,6 +10,9 @@
             <?php echo $task['noteText'];  ?>  
             </label>
         </div>
+        <span class="d-inline-block mt-4" style="font-size:2em;">
+            <a href='tasks.php?action=delete$delete=<?php echo $task['noteID']; ?>'><i class="text-danger fas fa-trash-alt"></i></a>
+        </span>
 
     </div>
     <?php    endforeach; ?>
