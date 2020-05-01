@@ -43,11 +43,27 @@
         }
     }
     
-    function getTasks($userID){
+    function getTasksNew($userID){
         global $db;
         
         //can possibly add group by className to group class assignments together regardless of date
-        $stmt = $db->prepare("SELECT className, color, noteDate, noteText, noteActive FROM ToDo_Notes AS Notes JOIN ToDo_Class As Class ON Notes.classID = Class.classID WHERE Class.userID = :userID ORDER BY noteDate ASC;");
+        $stmt = $db->prepare("SELECT className, color, noteDate, noteText, noteActive FROM ToDo_Notes AS Notes JOIN ToDo_Class As Class ON Notes.classID = Class.classID WHERE Class.userID = :userID AND Notes.noteActive = 0 ORDER BY noteDate ASC;");
+        
+        $binds = array(
+            ":userID" => $userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return false;
+    }
+    
+    function getTasksOld($userID){
+        global $db;
+        
+        //can possibly add group by className to group class assignments together regardless of date
+        $stmt = $db->prepare("SELECT className, color, noteDate, noteText, noteActive FROM ToDo_Notes AS Notes JOIN ToDo_Class As Class ON Notes.classID = Class.classID WHERE Class.userID = :userID AND Notes.noteActive = 1 ORDER BY noteDate ASC;");
         
         $binds = array(
             ":userID" => $userID
