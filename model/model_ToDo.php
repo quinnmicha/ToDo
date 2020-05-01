@@ -162,7 +162,7 @@
     function deleteTask($noteID){
         global $db;
         
-        $stmt= $db->prepare("DELETE FROM ToDo_Note WHERE noteID = :noteID");
+        $stmt= $db->prepare("DELETE FROM ToDo_Notes WHERE noteID = :noteID");
         
         $binds = array(
             "noteID"=>$noteID

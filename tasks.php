@@ -12,6 +12,11 @@ if( isset($_SESSION["login"])){
         session_unset();
         session_destroy();
     }
+    if($action=='delete'){
+            $noteID = filter_input(INPUT_GET, 'delete');
+            echo $noteID;
+            deleteTask($noteID);
+        }
     
     if(isPostRequest()){
         $action = filter_input(INPUT_POST, 'action');
@@ -27,6 +32,7 @@ if( isset($_SESSION["login"])){
             echo $noteDate;
             addTask($classID, $noteDate, $noteText);
         }
+        
     }
     $classes = getClasses($_SESSION["userID"]);
     $taskDataNew = getTasksNew($_SESSION["userID"]);
