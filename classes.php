@@ -9,17 +9,24 @@ session_start();
 if( isset($_SESSION["login"])){
     $action=  filter_input(INPUT_GET, 'action');
     $delete = filter_input(INPUT_GET, 'delete');//classID
+    echo $action;
+    echo $delete;
     if( $action=='false'){
         session_unset();
         session_destroy();
     }
-    if( $delete=='delete'){
+    if( $action=='delete'){
         deleteClass($delete);
     }
     
     if(isPostRequest()){
-        $classes = filter_input(INPUT_POST, 'className');
-        var_dump($classes);
+        $className = filter_input(INPUT_POST, 'className');
+        $classID = filter_input(INPUT_POST, 'classID');
+        $color = filter_input(INPUT_POST, 'color');
+        echo $className;
+        echo $classID;
+        echo $color;
+        editClass($classID, $className, $color);
     }
     $classes = getClasses($_SESSION["userID"]);
 }
@@ -82,8 +89,9 @@ else {
     </div>
 
     <div class="mt-4">
+        <?php foreach($classes AS $class): ?>
         <form action="../ToDo/classes.php" method="post">
-            <?php foreach($classes AS $class): ?>
+            
             <input type='hidden' value='<?php echo $class['classID']; ?>' name='classID'>
             <div class="form-group">
                 <div class="form-row">
@@ -102,12 +110,13 @@ else {
             </div>
             <div class='mb-5'>
                 <input type="submit" class="btn btn-success"  value="Change This Class" id="submitAdd">
-                <button class='btn btn-danger ml-4' href='classes.php?delete=<?php echo $class['classID']; ?>'>Delete Class</button>
+                <button class='btn btn-danger ml-4' href='classes.php?action=delete;delete=<?php echo $class['classID']; ?>'>Delete Class</button>
             </div>
-            <?php endforeach; ?>
+            
 
             
         </form>
+        <?php endforeach; ?>
     </div>
 
 
