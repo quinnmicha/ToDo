@@ -31,9 +31,6 @@ if( isset($_SESSION["login"])){
     $classes = getClasses($_SESSION["userID"]);
     $taskDataNew = getTasksNew($_SESSION["userID"]);
     $taskDataOld = getTasksOld($_SESSION["userID"]);
-    if($taskDataOld==NULL){
-        echo 'NULL';
-    }
 }
 
 else {
@@ -58,7 +55,6 @@ else {
      margin-top:20px;
      margin-bottom:60px;
      box-shadow:2px 4px 5px black;
-     background-color:#fcf7f3;
  }
  </style>
  <script type="text/javascript" src="model/modal.js"></script>
