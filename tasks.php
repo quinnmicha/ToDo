@@ -16,6 +16,7 @@ if( isset($_SESSION["login"])){
             $noteID = filter_input(INPUT_GET, 'delete');
             echo $noteID;
             deleteTask($noteID);
+            header("Location: ../ToDo/tasks.php");
         }
     
     if(isPostRequest()){
