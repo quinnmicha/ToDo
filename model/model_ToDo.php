@@ -159,6 +159,21 @@
         return false;
     }
     
+    function deleteTask($noteID){
+        global $db;
+        
+        $stmt= $db->prepare("DELETE FROM ToDo_Note WHERE noteID = :noteID");
+        
+        $binds = array(
+            "noteID"=>$noteID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        return false;
+    }
+    
     
     function isPostRequest() {
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
