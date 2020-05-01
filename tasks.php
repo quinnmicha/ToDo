@@ -62,7 +62,7 @@ else {
 
 <body id="0">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">My Planner</a>
+    <a class="navbar-brand" href="index.php">My Planner</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -70,6 +70,9 @@ else {
         <ul class="navbar-nav">
             <li class="nav-item">
                 <span class="nav-link text-success" onclick="addClass()">Add Class</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href='classes.php'>Edit Classes</a>
             </li>
             <li class="nav-item d-block d-ml-none d-lg-none d-xl-none">
                 <a class="nav-link text-danger" href="index.php?action=false">Logout</a>
