@@ -127,7 +127,23 @@
         return false;
     }
     
-    function editClass(){}
+    function editClass($classID, $className, $color){
+        global $db;
+        
+        $stmt = $db->prepare("UPDATE ToDo_Class SET className = :className, color = :color WHERE classID = :classID");
+        
+        $binds = array (
+            ":className"=>$className,
+            ":color"=>$color,
+            ":classID"=>$classID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        return false;
+    }
+    
     function deleteClass($classID){
         global $db;
         
