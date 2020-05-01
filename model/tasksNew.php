@@ -6,7 +6,7 @@
 
         <div class="form-check">
             <input class="form-check-input" type="checkbox" style="color:blue;" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1" style="color:grey;">
+            <label class="form-check-label" for="defaultCheck1">
             <?php echo $task['noteText']; ?>  
             </label>
         </div>
