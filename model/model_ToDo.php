@@ -69,6 +69,56 @@
         }
     }
     
+        //Returns true if user is registered
+    //else returns false
+    function changeUsername($userID, $user){
+        global $db;
+        
+        $Users= array();                        //
+        $Users = getUserNames();                // Checks if the username supplied is already registered
+        foreach($Users as $u){                  // If it is then the function fails
+            if(in_array($user, $u, true)){      //
+                                                //
+            return 0;                           //
+            }
+        }
+        
+        $stmt= $db->prepare('UPDATE ToDo_Login SET username = :user WHERE userID = :userID;');
+        
+        $binds = array(
+            ":user"=>$user,
+            ":userID"=>$userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    //Returns true if user is registered
+    //else returns false
+    function changePass($pass){
+        global $db;
+        
+        
+        $stmt= $db->prepare('UPDATE ToDo_Login SET password = :pass WHERE userID = :userID;');
+        
+        $binds = array(
+            ":pass"=>$user,
+            ":userID"=>$userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     function getTasksNew($userID){
         global $db;
         
