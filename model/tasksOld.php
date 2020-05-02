@@ -5,6 +5,7 @@
     <div class="week" style='background-color:<?php echo $task['color']; ?>;'>
         <a href="#0" style="float:right;color:blue;">back to top</a>
         <h4 id="1" style="color:grey;"><?php echo date('l | M j',strtotime($task['noteDate'])); ?></h4>
+        <h6><?php echo $task['className'];?></h6>
         <p style="color:grey;"><?php echo date('z',strtotime($task['noteDate'])) - date('z');  ?> Days Away</p>
 
         <div class="form-check">
