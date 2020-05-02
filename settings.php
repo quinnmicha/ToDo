@@ -124,11 +124,12 @@ else {
     
     <form action="settings.php" id="taskIconForm"  class="mt-4 d-none" method="POST">
         <input type="hidden" value="changeIcon" name="action">
+        <input type="submit" class="btn btn-success mb-2" value="Confirm Icon">
         <?php foreach($icons AS $icon): ?>
-        <div class="form-check">
+        <div class="form-check mb-4">
             <input class="form-check-input" type="radio" name="icon" id="<?php echo $icon["name"];?>" value="<?php echo $icon["value"];?>" checked>
             <label class="form-check-label" for="<?php echo $icon["name"];?>">
-                <span class="d-inline-block mt-4 text-success" style="font-size:3em;">
+                <span class="d-inline-block text-success" style="font-size:3em;">
                     <i class="<?php echo $icon["value"];?>" onclick=""></i>
                 </span>
             </label>
