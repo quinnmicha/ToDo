@@ -88,9 +88,9 @@ else {
         <h4 class="mt-2 col-12"><?php echo $_SESSION['username'];?></h4>
         
     </div>
-    
-    <button class="btn btn-info" id="changeUser">Change Username</button>
-    <button class="btn btn-info" id="changePass">Change Password</button>
+    <button class="btn btn-info col-6 offset-12 mt-2" id="changeIcon">Change Task Icon</button>
+    <button class="btn btn-info col-6 offset-12 mt-4" id="changeUser">Change Username</button>
+    <button class="btn btn-info offset-12 mt-4" id="changePass">Change Password</button>
     
     <form action="settings.php" id="changeUserForm" class="col-8 offset-2 mt-4 d-none" method="POST">
         <input type="hidden" value="changeUser" name="action">
@@ -116,6 +116,11 @@ else {
         </div>
         
     </form>
+    
+    <form action="settings.php" id="taskIconForm"  class="mt-4 d-none" method="POST">
+        
+    </form>
+          
     
     
 <!--   ~~~~~~~~~MODALS~~~~~~~~~~       -->
