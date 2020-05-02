@@ -102,7 +102,7 @@ else {
     <div id="top" class="row">
         <h1 class='mt-4 col-4'>Tasks</h1>
         <span class="offset-5 d-inline-block mt-4 text-success" style="font-size:3em;">
-            <i class="fad fa-space-station-moon-alt" onclick="addTask()"></i>
+            <i class="<?php echo $_SESSION['taskIcon']?>" onclick="addTask()"></i>
             <p style="font-size:16px; margin:0;padding:0;">Add Task</p>
         </span>
     </div>
