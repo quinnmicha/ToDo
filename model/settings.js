@@ -5,6 +5,9 @@ $(document).ready(function(){
     $("#changePass").click(function(){
         $("#changePassForm").toggleClass('d-none');
     });
+    $("#changeIcon").click(function(){
+        $("#taskIconForm").toggleClass("d-none");
+    });
     
 });
 //Returns true and sends to php if everything is valid

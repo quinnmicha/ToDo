@@ -250,6 +250,15 @@
         return false;
     }
     
+    //function to display icons that can be used
+    function getIcons(){
+        $icons = array(
+            array("name"=>"deathStar","value" => "fad fa-space-station-moon-alt"),
+            array("name"=>"deathStar","value" => "fad fa-space-station-moon-alt")
+        );
+        return $icons;
+    }
+    
     
     function isPostRequest() {
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );

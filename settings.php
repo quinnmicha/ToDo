@@ -28,6 +28,7 @@ if( isset($_SESSION["login"])){
         }
         
     }
+    $icons = getIcons();
 }
 
 else {
@@ -122,7 +123,18 @@ else {
     </form>
     
     <form action="settings.php" id="taskIconForm"  class="mt-4 d-none" method="POST">
-        
+        <input type="hidden" value="changeIcon" name="action">
+        <?php foreach($icons AS $icon): ?>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="icon" id="<?php echo $icon["name"];?>" value="<?php echo $icon["value"];?>" checked>
+            <label class="form-check-label" for="<?php echo $icon["name"];?>">
+                <span class="d-inline-block mt-4 text-success" style="font-size:3em;">
+                    <i class="<?php echo $icon["value"];?>" onclick=""></i>
+                </span>
+            </label>
+        </div>
+        <?php endforeach; ?>
+</div>
     </form>
           
     
