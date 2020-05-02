@@ -119,6 +119,22 @@
         }
     }
     
+    function changeIcon($userID, $icon){
+        global $db;
+        
+        $stmt = $db->prepare("UPDATE ToDo_Login SET taskIcon = :icon WHERE userID = :userID");
+        
+        $binds = array(
+            ":icon"=>$icon,
+            ":userID"=>$userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        return false;
+    }
+    
     function getTasksNew($userID){
         global $db;
         
