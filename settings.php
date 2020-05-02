@@ -21,27 +21,9 @@ if( isset($_SESSION["login"])){
     
     if(isPostRequest()){
         $action = filter_input(INPUT_POST, 'action');
-        if($action == 'addClass'){
-            $className = filter_input(INPUT_POST, 'className');
-            $color = filter_input(INPUT_POST, 'color');
-            addClass($_SESSION['userID'], $className, $color);
-        }
-        if($action == 'addTask'){
-            $classID = filter_input(INPUT_POST, 'class');
-            $noteDate = filter_input(INPUT_POST, 'date');
-            $noteText = filter_input(INPUT_POST, 'task');
-            echo $noteDate;
-            addTask($classID, $noteDate, $noteText);
-            header("Location: ../ToDo/tasks.php");//To fix the bug where it will create multiple copies if you check the task off right after making it
-        }
-        if($action == 'active'){
-            
-        }
+        
         
     }
-    $classes = getClasses($_SESSION["userID"]);
-    $taskDataNew = getTasksNew($_SESSION["userID"]);
-    $taskDataOld = getTasksOld($_SESSION["userID"]);
 }
 
 else {
@@ -86,7 +68,7 @@ else {
                 <a class="nav-link" href='classes.php'><i class="far fa-tasks-alt"></i> Edit Classes</a>
             </li>
             <li>
-                <a class="nav-link" href='settings.php'><i class="fas fa-cog"></i> Settings</a>
+                <a class="nav-link" href='classes.php'><i class="fas fa-cog"></i> Settings</a>
             </li>
             <li class="nav-item d-block d-ml-none d-lg-none d-xl-none">
                 <a class="nav-link text-danger" href="index.php?action=false"><i class="fas fa-sign-out"></i> Logout</a>
@@ -99,25 +81,17 @@ else {
         <a class=" text-danger" href="index.php?action=false"><b>Log Out</b></a>
     </div>
 </nav>
-    
+<!--~~~~~~~~~~~~~~~~~/nav~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
 <div class="container">
     <div id="top" class="row">
-        <h1 class='mt-4 col-4'>Tasks</h1>
-        <span class="offset-5 d-inline-block mt-4 text-success" style="font-size:3em;">
-            <i class="fad fa-space-station-moon-alt" onclick="addTask()"></i>
-            <p style="font-size:16px; margin:0;padding:0;">Add Task</p>
-        </span>
+        <h1 class='mt-4 col-4'>Settings</h1>
+        <h4 class="mt-2 col-12"><?php echo $_SESSION['username'];?></h4>
+        
     </div>
-
-    <?php if($taskDataNew!=NULL){
-        include __DIR__.'/model/tasksNew.php';
-    }?>
     
+    <button class="btn btn-info">Change Username</button>
+    <button class="btn btn-info">Change Password</button>
     
-    
-    <?php if($taskDataOld!=NULL){
-        include __DIR__.'/model/tasksOld.php';
-    }?>
     
 <!--   ~~~~~~~~~MODALS~~~~~~~~~~       -->
     
@@ -142,47 +116,6 @@ else {
                             <label class="control-label" for="color">Color (stay light):</label>
                             <input type="color" class="form-control" style="border-color: #5380b7;" id="color" name="color" >
                             <div class="invalid-feedback">Please enter a unit price. Only use numbers and one decimal point</div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-success"  value="Add Item" id="submitAdd">
-                </div>
-            </form>
-        </div>
-
-    </div>
-
-    <div id="addTask" class="modal">
-
-        <div class="modal-content mt-4">
-            <div>
-                <span class="close">&times;</span>
-            </div>
-            <form action="../ToDo/tasks.php" method="post">
-                <div class="modal-body container-fluid">
-                    <div class="form-group">
-                        <input type="hidden" name="action" value ="addTask">
-                        <label for="class">Class:</label>
-                        <select class="form-control" id="class" name='class'>
-                            <?php foreach ($classes AS $class): ?>
-                          <option value='<?php echo $class['classID']; ?>'><?php echo $class['className'];?></option>
-                          <?php endforeach;?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <label class="control-label" for="date">Date Due:</label>
-                            <input type="date" class="form-control" style="border-color: #5380b7;" id="date" name="date" >
-                            <div class="invalid-feedback">Please type your User Name.</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <label class="control-label" for="task">Task:</label>
-                            <textarea type="color" class="form-control" style="border-color: #5380b7;" id="task" name="task" ></textarea>
-                            <div class="invalid-feedback">Error MEssage goes in this spot bitch</div>
                         </div>
                     </div>
                     
