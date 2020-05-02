@@ -171,14 +171,9 @@ else {
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <label class="control-label" for="date">Date Due:</label>
-                            <input type="date" class="form-control" style="border-color: #5380b7;" id="date" name="date" >
-                            <div class="invalid-feedback">Please enter the date it is due.</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="control-label" for="date">Time Due (24 Hour Clock):</label>
-                            <input type="time" class="form-control" style="border-color: #5380b7;" id="name" name="time" >
-                            <div class="invalid-feedback">Please enter the time it is due.</div>
+                            <label class="control-label" for="date">Date and Time Due:(24 Hour clock)</label>
+                            <input type="datetime-local" class="form-control" style="border-color: #5380b7;" id="date" name="date" >
+                            <div class="invalid-feedback">Please enter the date and time it is due.</div>
                         </div>
                     </div>
                     <div class="form-group">

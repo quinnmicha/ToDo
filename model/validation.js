@@ -47,11 +47,6 @@ function addTaskCheck(){
         $("#date").removeClass('is-valid');
         errorCheck++;
     }
-    if($("#time").val()===""){
-        $("#time").addClass('is-invalid');
-        $("#time").removeClass('is-valid');
-        errorCheck++;
-    }
     if($("#task").val()===""){
         $("#task").addClass('is-invalid');
         $("#task").removeClass('is-valid');
