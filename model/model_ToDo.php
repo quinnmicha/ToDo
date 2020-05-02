@@ -100,7 +100,7 @@
     
     //Returns true if user is registered
     //else returns false
-    function changePass($pass){
+    function changePassword($pass){
         global $db;
         
         

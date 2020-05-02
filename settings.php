@@ -12,16 +12,20 @@ if( isset($_SESSION["login"])){
         session_unset();
         session_destroy();
     }
-    if($action=='delete'){
-            $noteID = filter_input(INPUT_GET, 'delete');
-            echo $noteID;
-            deleteTask($noteID);
-            header("Location: ../ToDo/tasks.php");
-        }
+    
     
     if(isPostRequest()){
         $action = filter_input(INPUT_POST, 'action');
-        
+        if($action=='changeUser'){
+            $newUser = filter_input(INPUT_Post, 'newUsername');
+            changeUsername($_SESSION['userID'], $newUsername);
+            header("Location: ../ToDo/settings.php");
+        }
+        if($action=='changePass'){
+            $newPass = filter_input(INPUT_POST, 'newPass');
+            changePassword($_SESSION['userID'], $newPassword);
+            header("Location: ../ToDo/settings.php");
+        }
         
     }
 }
@@ -106,13 +110,13 @@ else {
     <form action="settings.php" id="changePassForm" class="col-8 offset-2 mt-4 d-none" method="POST">
         <input type="hidden" value="changePass" name="action">
         <div class="form-row">
-            <input type="text" class="form-control mb-2" placeholder="New Password" name="newPassword" id="pass">
+            <input type="text" class="form-control mb-2" placeholder="New Password" name="newPassword" id="password">
         </div>
         <div class="form-row">
-            <input type="text" class="form-control" placeholder="Confirm New Password" id="confPass">
+            <input type="text" class="form-control" placeholder="Confirm New Password" id="confPassword">
         </div>
         <div class="form-row">
-            <input type="submit" class="btn btn-success col-8 offset-4 mt-2" value="Change password">
+            <button type="submit" class="btn btn-success col-8 offset-4 mt-2" onclick="return changePasswordCheck()">Change Password</button>
         </div>
         
     </form>
