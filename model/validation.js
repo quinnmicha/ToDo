@@ -35,6 +35,30 @@ $(document).ready(function() {
 
 });
 
+function addTaskCheck(){
+    var errorCheck = 0;
+    if($("#class").val()===""){
+        $("#class").addClass('is-invalid');
+        $("#class").removeClass('is-valid');
+        errorCheck++;
+    }
+    if($("#date").val()===""){
+        $("#date").addClass('is-invalid');
+        $("#date").removeClass('is-valid');
+        errorCheck++;
+    }
+    if($("#task").val()===""){
+        $("#task").addClass('is-invalid');
+        $("#task").removeClass('is-valid');
+        errorCheck++;
+    }
+    console.log('working');
+  if(errorCheck>0){
+    return false;
+    }
+    else{ return true; }
+}
+
 //Returns true and sends to php if everything is valid
 function checkData(){
     var errorCheck = 0;
