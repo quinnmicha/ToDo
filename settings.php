@@ -89,10 +89,10 @@ else {
         
     </div>
     
-    <button class="btn btn-info">Change Username</button>
-    <button class="btn btn-info">Change Password</button>
+    <button class="btn btn-info" id="changeUser">Change Username</button>
+    <button class="btn btn-info" id="changePass">Change Password</button>
     
-    <form action="settings.php" class="col-8 offset-2 mt-4 d-none" method="POST">
+    <form action="settings.php" id="changeUserForm" class="col-8 offset-2 mt-4 d-none" method="POST">
         <input type="hidden" value="changeUser" name="action">
         <div class="form-row">
             <input type="text" class="form-control" placeholder="New Username" name="newUsername">
@@ -103,7 +103,7 @@ else {
         
     </form>
     
-    <form action="settings.php" class="col-8 offset-2 mt-4" method="POST">
+    <form action="settings.php" id="changePassForm" class="col-8 offset-2 mt-4 d-none" method="POST">
         <input type="hidden" value="changePass" name="action">
         <div class="form-row">
             <input type="text" class="form-control mb-2" placeholder="New Password" name="newPassword" id="pass">
