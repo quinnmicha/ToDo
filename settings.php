@@ -154,6 +154,7 @@ else {
     </div>
 
 <script type='text/javascript' src='model/activePost.js'></script>
+<script type='text/javascript' src='model/settings.js'></script>
    
 </div><!--/.container-->
 
