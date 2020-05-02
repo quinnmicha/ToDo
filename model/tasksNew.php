@@ -1,7 +1,7 @@
 <?php foreach ($taskDataNew as $task): ?>
     <div class="week" style='background-color:<?php echo $task['color']; ?>;'>
         <a href="#0" style="float:right;color:blue;">back to top</a>
-        <h4 id="1"><?php echo date('l | M j',strtotime($task['noteDate'])); ?></h4>
+        <h4 id="1"><?php echo date('l | M j  g:i A',strtotime($task['noteDate'])); ?></h4>
         <h6><?php echo $task['className'];?></h6>
         <p><?php echo date('z',strtotime($task['noteDate'])) - date('z');  ?> Days Away</p>
         
