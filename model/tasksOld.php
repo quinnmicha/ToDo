@@ -5,7 +5,7 @@
         <p><?php echo date('z',strtotime($task['noteDate'])) - date('z');  ?> Days Away</p>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" style="color:blue;" value="" id="defaultCheck1">
+            <input class="form-check-input" type="checkbox" style="color:blue;"  data-note-id="<?php echo $task['noteID']; ?>" data-note-active="0" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1" style="color:grey;">
             <?php echo $task['noteText'];  ?>  
             </label>
