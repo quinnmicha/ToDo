@@ -26,6 +26,11 @@ if( isset($_SESSION["login"])){
             changePassword($_SESSION['userID'], $newPassword);
             header("Location: ../ToDo/settings.php");
         }
+        if($action=='changeIcon'){
+            $icon = filter_input(INPUT_POST, 'icon');
+            $_SESSION['taskIcon']=$icon;
+            changeIcon($_SESSION['userID'], $icon);
+        }
         
     }
     $icons = getIcons();
