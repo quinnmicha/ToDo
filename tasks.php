@@ -14,7 +14,6 @@ if( isset($_SESSION["login"])){
     }
     if($action=='delete'){
             $noteID = filter_input(INPUT_GET, 'delete');
-            echo $noteID;
             deleteTask($noteID);
             header("Location: ../ToDo/tasks.php");
         }
@@ -30,7 +29,6 @@ if( isset($_SESSION["login"])){
             $classID = filter_input(INPUT_POST, 'class');
             $noteDate = filter_input(INPUT_POST, 'date');
             $noteText = filter_input(INPUT_POST, 'task');
-            echo $noteDate;
             addTask($classID, $noteDate, $noteText);
             header("Location: ../ToDo/tasks.php");//To fix the bug where it will create multiple copies if you check the task off right after making it
         }
