@@ -18,13 +18,19 @@ if( isset($_SESSION["login"])){
     }
     
     if(isPostRequest()){
-        $className = filter_input(INPUT_POST, 'className');
-        $classID = filter_input(INPUT_POST, 'classID');
-        $color = filter_input(INPUT_POST, 'color');
-        echo $className;
-        echo $classID;
-        echo $color;
-        editClass($classID, $className, $color);
+        $action = filter_input(INPUT_POST, 'action');
+        if($action == 'addClass'){
+            $className = filter_input(INPUT_POST, 'className');
+            $color = filter_input(INPUT_POST, 'color');
+            addClass($_SESSION['userID'], $className, $color);
+        }
+        if($action == 'editClass'){
+            $className = filter_input(INPUT_POST, 'className');
+            $classID = filter_input(INPUT_POST, 'classID');
+            $color = filter_input(INPUT_POST, 'color');
+            editClass($classID, $className, $color);
+        }
+        
     }
     $classes = getClasses($_SESSION["userID"]);
 }
@@ -87,7 +93,7 @@ else {
     </div>
 
     <div class="mt-4">
-        <?php if($taskDataOld!=NULL){
+        <?php if($classes!=NULL){
             include __DIR__.'/model/viewClasses.php';
             }
             else{

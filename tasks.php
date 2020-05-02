@@ -32,6 +32,7 @@ if( isset($_SESSION["login"])){
             $noteText = filter_input(INPUT_POST, 'task');
             echo $noteDate;
             addTask($classID, $noteDate, $noteText);
+            header("Location: ../ToDo/tasks.php");//To fix the bug where it will create multiple copies if you check the task off right after making it
         }
         if($action == 'active'){
             
@@ -108,8 +109,7 @@ else {
         include __DIR__.'/model/tasksNew.php';
     }?>
     
-    <div class='col-12' style='border:black 2px dashed'></div>
-    <h1>Accomplished</h1>
+    
     
     <?php if($taskDataOld!=NULL){
         include __DIR__.'/model/tasksOld.php';
