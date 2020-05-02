@@ -22,12 +22,13 @@ function addClass(){
       }
     };
 }
+
 function addTask(){
     // Get the modal
     var modal = document.getElementById("addTask");
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("close")[1];
 
     // When the user clicks on the button, open the modal
     modal.style.display = "block";
