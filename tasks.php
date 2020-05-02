@@ -80,14 +80,18 @@ else {
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <span class="nav-link text-success" onclick="addClass()">Add Class</span>
+                <span class="nav-link text-success" onclick="addClass()"><i class="far fa-plus"></i> Add Class</span>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href='classes.php'>Edit Classes</a>
+                <a class="nav-link" href='classes.php'><i class="far fa-tasks-alt"></i> Edit Classes</a>
+            </li>
+            <li>
+                <a class="nav-link" href='classes.php'><i class="fas fa-cog"></i> Settings</a>
             </li>
             <li class="nav-item d-block d-ml-none d-lg-none d-xl-none">
-                <a class="nav-link text-danger" href="index.php?action=false">Logout</a>
+                <a class="nav-link text-danger" href="index.php?action=false"><i class="fas fa-sign-out"></i> Logout</a>
             </li>
+            
             
         </ul>
     </div>
