@@ -66,7 +66,7 @@ else {
      box-shadow:2px 4px 5px black;
  }
  </style>
- <script type="text/javascript" src="model/modal.js"></script>
+
 </head>
 
 <body id="0">
@@ -173,20 +173,25 @@ else {
                         <div class="form-row">
                             <label class="control-label" for="date">Date Due:</label>
                             <input type="date" class="form-control" style="border-color: #5380b7;" id="date" name="date" >
-                            <div class="invalid-feedback">Please type your User Name.</div>
+                            <div class="invalid-feedback">Please enter the date it is due.</div>
+                        </div>
+                        <div class="form-row">
+                            <label class="control-label" for="date">Time Due (24 Hour Clock):</label>
+                            <input type="time" class="form-control" style="border-color: #5380b7;" id="name" name="time" >
+                            <div class="invalid-feedback">Please enter the time it is due.</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
                             <label class="control-label" for="task">Task:</label>
-                            <textarea type="color" class="form-control" style="border-color: #5380b7;" id="task" name="task" ></textarea>
-                            <div class="invalid-feedback">Error MEssage goes in this spot bitch</div>
+                            <textarea class="form-control" style="border-color: #5380b7;" id="task" name="task" ></textarea>
+                            <div class="invalid-feedback">Please don't leave empty</div>
                         </div>
                     </div>
                     
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-success"  value="Add Item" id="submitAdd">
+                    <input type="submit" class="btn btn-success" onclick='return addTaskCheck()'  value="Add Item" id="submitAdd">
                 </div>
             </form>
         </div>
@@ -197,6 +202,6 @@ else {
    
 </div><!--/.container-->
 
-
+ <script type="text/javascript" src="model/modal.js"></script>
 </body>
 </html>
