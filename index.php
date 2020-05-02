@@ -82,7 +82,7 @@ else if(isPostRequest()){
             <input class='form-control' type="text" name="username" placeholder="Username">
         </div>
         <div class="form-group mt-2">
-            <input class='form-control' type="text" name="password" placeholder="Password">
+            <input class='form-control' type="password" name="password" placeholder="Password">
         </div>
         <div class="form-group ml-5">
             <input type='submit' class="btn btn-outline-primary ml-5" value='Submit'>

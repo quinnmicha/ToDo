@@ -102,13 +102,44 @@ else {
         ?>
     </div>
 
-
-
-
-
-<script>
+<!--   ~~~~~~~~~MODALS~~~~~~~~~~       -->
     
-</script>
+    <div id="addClass" class="modal">
+
+        <div class="modal-content mt-4">
+            <div>
+                <span class="close">&times;</span>
+            </div>
+            <form action="../ToDo/tasks.php" method="post">
+                <div class="modal-body container-fluid">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <input type="hidden" name="action" value ="addClass">
+                            <label class="control-label" for="className">class Name:</label>
+                            <input type="text" class="form-control" style="border-color: #5380b7;" id="className" placeholder="Enter Item Name" name="className" >
+                            <div class="invalid-feedback">Please type your User Name.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label class="control-label" for="color">Color (stay light):</label>
+                            <input type="color" class="form-control" style="border-color: #5380b7;" id="color" name="color" >
+                            <div class="invalid-feedback">Please enter a unit price. Only use numbers and one decimal point</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success"  value="Add Item" id="submitAdd">
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+<script type='text/javascript' src='model/activePost.js'></script>
    
 </div><!--/.container-->
 
