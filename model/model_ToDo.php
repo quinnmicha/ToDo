@@ -17,7 +17,7 @@
         
         $pass=sha1($pass);
         
-        $stmt= $db->prepare('INSERT INTO ToDo_Login (username, password, icon) VALUES (:user, :pass, "fad fa-space-station-moon-alt");');//hard codes deathstar as first icon
+        $stmt= $db->prepare('INSERT INTO ToDo_Login (username, password, taskIcon) VALUES (:user, :pass, "fad fa-space-station-moon-alt");');//hard codes deathstar as first icon
         
         $binds = array(
             ":user"=>$user,
