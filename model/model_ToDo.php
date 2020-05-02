@@ -269,8 +269,16 @@
     //function to display icons that can be used
     function getIcons(){
         $icons = array(
+            //the name is arbitrary and more for me
+            //these are fontAwesome icons
             array("name"=>"deathStar","value" => "fad fa-space-station-moon-alt"),
-            array("name"=>"deathStar","value" => "fad fa-space-station-moon-alt")
+            array("name"=>"space-station-moon","value" => "fab fa-space-station-moon"),
+            array("name"=>"jediOrder","value" => "fab fa-jedi-order"),
+            array("name"=>"galacticRepublic","value" => "fab fa-galactic-republic"),
+            array("name"=>"starFighterAlt","value" => "fab fa-starfighter-alt"),
+            array("name"=>"starFighter","value" => "fab fa-starfighter"),
+            array("name"=>"starshipFreighter","value" => "fab fa-starship-freighter")
+            
         );
         return $icons;
     }
