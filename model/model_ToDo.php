@@ -5,6 +5,16 @@
     //else returns false
     function register($user, $pass){
         global $db;
+        
+        $Users= array();                        //
+        $Users = getUserNames();                // Checks if the username supplied is already registered
+        foreach($Users as $u){                  // If it is then the function fails
+            if(in_array($user, $u, true)){      //
+                                                //
+            return 0;                           //
+            }
+        }
+        
         $pass=sha1($pass);
         
         $stmt= $db->prepare('INSERT INTO ToDo_Login (username, password) VALUES (:user, :pass);');
@@ -16,6 +26,22 @@
         
         if($stmt->execute($binds) && $stmt->rowCount()>0){
             return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+        //Used to validate registration
+    // so that no two accounts can have the same username
+    function getUserNames(){
+        global $db;
+        
+        $stmt=$db->prepare("SELECT username FROM login_inventory");
+        
+        if($stmt->execute() && $stmt->rowCount()>0){
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return ($results);
         }
         else{
             return false;
