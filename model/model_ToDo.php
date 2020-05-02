@@ -5,9 +5,19 @@
     //else returns false
     function register($user, $pass){
         global $db;
+        
+        $Users= array();                        //
+        $Users = getUserNames();                // Checks if the username supplied is already registered
+        foreach($Users as $u){                  // If it is then the function fails
+            if(in_array($user, $u, true)){      //
+                                                //
+            return 0;                           //
+            }
+        }
+        
         $pass=sha1($pass);
         
-        $stmt= $db->prepare('INSERT INTO ToDo_Login (username, password) VALUES (:user, :pass);');
+        $stmt= $db->prepare('INSERT INTO ToDo_Login (username, password, taskIcon) VALUES (:user, :pass, "fad fa-space-station-moon-alt");');//hard codes deathstar as first icon
         
         $binds = array(
             ":user"=>$user,
@@ -21,6 +31,22 @@
             return false;
         }
     }
+    
+        //Used to validate registration
+    // so that no two accounts can have the same username
+    function getUserNames(){
+        global $db;
+        
+        $stmt=$db->prepare("SELECT username FROM login_inventory");
+        
+        if($stmt->execute() && $stmt->rowCount()>0){
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return ($results);
+        }
+        else{
+            return false;
+        }
+    }
         
     //Returns username if user exists and password matches
     //else returns false
@@ -28,7 +54,7 @@
         global $db;
         
         $pass = sha1($pass);
-        $stmt = $db->prepare("SELECT userID, username FROM ToDo_Login WHERE username = :user && password = :pass");   
+        $stmt = $db->prepare("SELECT userID, username, taskIcon FROM ToDo_Login WHERE username = :user && password = :pass");   
         
         $binds = array(
             ":user"=>$user,
@@ -41,6 +67,72 @@
         else{
             return false;
         }
+    }
+    
+        //Returns true if user is registered
+    //else returns false
+    function changeUsername($userID, $user){
+        global $db;
+        
+        $Users= array();                        //
+        $Users = getUserNames();                // Checks if the username supplied is already registered
+        foreach($Users as $u){                  // If it is then the function fails
+            if(in_array($user, $u, true)){      //
+                                                //
+            return 0;                           //
+            }
+        }
+        
+        $stmt= $db->prepare('UPDATE ToDo_Login SET username = :user WHERE userID = :userID;');
+        
+        $binds = array(
+            ":user"=>$user,
+            ":userID"=>$userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    //Returns true if user is registered
+    //else returns false
+    function changePassword($pass){
+        global $db;
+        
+        
+        $stmt= $db->prepare('UPDATE ToDo_Login SET password = :pass WHERE userID = :userID;');
+        
+        $binds = array(
+            ":pass"=>$user,
+            ":userID"=>$userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    function changeIcon($userID, $icon){
+        global $db;
+        
+        $stmt = $db->prepare("UPDATE ToDo_Login SET taskIcon = :icon WHERE userID = :userID");
+        
+        $binds = array(
+            ":icon"=>$icon,
+            ":userID"=>$userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        return false;
     }
     
     function getTasksNew($userID){
@@ -172,6 +264,23 @@
             return true;
         }
         return false;
+    }
+    
+    //function to display icons that can be used
+    function getIcons(){
+        $icons = array(
+            //the name is arbitrary and more for me
+            //these are fontAwesome icons
+            array("name"=>"deathStar","value" => "fad fa-space-station-moon-alt"),
+            array("name"=>"space-station-moon","value" => "fas fa-space-station-moon"),
+            array("name"=>"jediOrder","value" => "fab fa-jedi-order"),
+            array("name"=>"galacticRepublic","value" => "fab fa-galactic-republic"),
+            array("name"=>"starFighterAlt","value" => "fas fa-starfighter-alt"),
+            array("name"=>"starFighter","value" => "fas fa-starfighter"),
+            array("name"=>"starshipFreighter","value" => "fas fa-starship-freighter")
+            
+        );
+        return $icons;
     }
     
     
