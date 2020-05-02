@@ -89,7 +89,7 @@ else {
     
 <div class="container">
     <div id="top" class="row">
-        <h1 class='mt-4 col-4' style="border:red 2px solid;">Classes</h1>
+        <h1 class='mt-4 col-4'>Classes</h1>
     </div>
 
     <div class="mt-4">
