@@ -1,21 +1,17 @@
 <?php
 include ('db.php');
 
-global $db;
+    $noteID = filter_input(INPUT_POST, 'noteIDJS');
+    $noteActive = filter_input(INPUT_POST, 'noteActiveJS');
 
-$noteID = filter_input(INPUT_POST, 'noteId');
-$noteActive = filter_input(INPUT_POST, 'noteActive');
-$x = 1;
+    $stmt = $db->prepare("UPDATE ToDo_Notes SET noteActive = ".$noteActive." WHERE noteID = ".$noteID.";");
+    //Not the way I wanted to do it, but hopefully still ok
 
-$stmt = $db->prepare("UPDATE ToDo_Notes SET noteActive = :noteActive WHERE noteID = :noteID");
-
-$binds=array(
-    ":noteActive"=>$noteActive,
-    ":noteID"=>$noteID
-);
-
-if($stmt->execute($binds)){
-    $x = 2;
-}
+    if($stmt->execute() && $stmt->rowCount()>0){
+        echo 'worked';
+    }
+    else{
+        echo 'failed';
+    }
 ?>
 
