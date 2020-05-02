@@ -93,11 +93,26 @@ else {
     <button class="btn btn-info">Change Password</button>
     
     <form action="settings.php" class="col-8 offset-2 mt-4 d-none" method="POST">
+        <input type="hidden" value="changeUser" name="action">
         <div class="form-row">
             <input type="text" class="form-control" placeholder="New Username" name="newUsername">
         </div>
         <div class="form-row">
             <input type="submit" class="btn btn-success col-8 offset-4 mt-2" value="Change Username">
+        </div>
+        
+    </form>
+    
+    <form action="settings.php" class="col-8 offset-2 mt-4" method="POST">
+        <input type="hidden" value="changePass" name="action">
+        <div class="form-row">
+            <input type="text" class="form-control mb-2" placeholder="New Password" name="newPassword" id="pass">
+        </div>
+        <div class="form-row">
+            <input type="text" class="form-control" placeholder="Confirm New Password" id="confPass">
+        </div>
+        <div class="form-row">
+            <input type="submit" class="btn btn-success col-8 offset-4 mt-2" value="Change password">
         </div>
         
     </form>
