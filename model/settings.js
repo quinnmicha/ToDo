@@ -8,6 +8,9 @@ $(document).ready(function(){
     $("#changeIcon").click(function(){
         $("#taskIconForm").toggleClass("d-none");
     });
+    $("#changeTaskColor").click(function(){
+        $("#changeTaskColorForm").toggleClass("d-none");
+    });
     
 });
 //Returns true and sends to php if everything is valid
