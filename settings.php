@@ -98,9 +98,25 @@ else {
         <h4 class="mt-2 col-12"><?php echo $_SESSION['username'];?></h4>
         
     </div>
-    <button class="btn btn-info col-6 offset-12 mt-2" id="changeIcon">Change Task Icon</button>
-    <button class="btn btn-info col-6 offset-12 mt-4" id="changeUser">Change Username</button>
-    <button class="btn btn-info offset-12 mt-4" id="changePass">Change Password</button>
+    <div class="col">
+        <button class="btn btn-info col-5 mt-2" id="changeIcon">Change Task Icon</button>
+        <button class="btn btn-info col-5 mt-2" id="changeTaskColor">Change Task Color</button>
+    </div>
+    <div class="col mt-4">
+        <button class="btn btn-info col-5  mt-4" id="changeUser">Change Username</button>
+        <button class="btn btn-info col-5 mt-4" id="changePass">Change Password</button>
+    </div>
+    
+    <form action="settings.php" id="changeTaskColorForm" class="col-8 offset-2 mt-4 d-none" method="POST">
+        <input type="hidden" value="changeTaskColor" name="action">
+        <div class="form-row">
+            <input type="color" class="form-control" value="#5cb85c" name="newTaskColor">
+        </div>
+        <div class="form-row">
+            <input type="submit" class="btn btn-success col-8 offset-4 mt-2" value="Change Color">
+        </div>
+        
+    </form>
     
     <form action="settings.php" id="changeUserForm" class="col-8 offset-2 mt-4 d-none" method="POST">
         <input type="hidden" value="changeUser" name="action">
