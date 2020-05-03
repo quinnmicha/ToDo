@@ -54,7 +54,7 @@
         global $db;
         
         $pass = sha1($pass);
-        $stmt = $db->prepare("SELECT userID, username, taskIcon FROM ToDo_Login WHERE username = :user && password = :pass");   
+        $stmt = $db->prepare("SELECT userID, username, taskColor, taskIcon FROM ToDo_Login WHERE username = :user && password = :pass");   
         
         $binds = array(
             ":user"=>$user,
@@ -126,6 +126,22 @@
         
         $binds = array(
             ":icon"=>$icon,
+            ":userID"=>$userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        return false;
+    }
+    
+    function changeTaskColor($userID, $color){
+        global $db;
+        
+        $stmt = $db->prepare("UPDATE ToDo_Login SET taskColor = :color WHERE userID = :userID");
+        
+        $binds = array(
+            ":color"=>$color,
             ":userID"=>$userID
         );
         

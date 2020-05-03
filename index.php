@@ -24,6 +24,7 @@ else if(isPostRequest()){
         $_SESSION['login'] = true;
         $_SESSION['username'] = $login[0]['username'];
         $_SESSION['userID'] = $login[0]['userID'];
+        $_SESSION['taskColor'] = $login[0]['taskColor'];
         $_SESSION['taskIcon'] = $login[0]['taskIcon'];
         header("Location: ../ToDo/tasks.php");
     }
