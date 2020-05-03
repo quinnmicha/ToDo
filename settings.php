@@ -72,7 +72,7 @@ else {
 <body id="0">
  <?php include __DIR__.'/model/navbar.php'; ?>
 <!--~~~~~~~~~~~~~~~~~/nav~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
-<div class="container">
+<div class="container" style="min-height:690px;">
     <div id="top" class="row">
         <h1 class='mt-4 col-4'>Settings</h1>
         <h4 class="mt-2 col-12"><?php echo $_SESSION['username'];?></h4>
@@ -180,7 +180,7 @@ else {
 <script type='text/javascript' src='model/settings.js'></script>
    
 </div><!--/.container-->
-
+<?php include __DIR__.'/model/footer.php'; ?>
 
 </body>
 </html>

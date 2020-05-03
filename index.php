@@ -52,7 +52,7 @@ else if(isPostRequest()){
     
 </nav>
     
-<div class="container">
+<div class="container" style="min-height:680px;">
     <form method='POST' class='m-auto w-50'>
         <h1 class='mt-4'>Login</h1>
         <?php
@@ -84,7 +84,6 @@ else if(isPostRequest()){
         
    
 </div><!--/.container-->
-
-
+<?php include __DIR__.'/model/footer.php'; ?>
 </body>
 </html>

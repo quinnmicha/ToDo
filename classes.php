@@ -65,7 +65,7 @@ else {
 <body id="0">
  <?php include __DIR__.'/model/navbar.php'; ?>
     
-<div class="container">
+<div class="container" style="min-height:690px;">
     <div id="top" class="row">
         <h1 class='mt-4 col-4'>Classes</h1>
     </div>
@@ -120,7 +120,7 @@ else {
 <script type='text/javascript' src='model/activePost.js'></script>
    
 </div><!--/.container-->
-
+<?php include __DIR__.'/model/footer.php'; ?>
 
 </body>
 </html>

@@ -72,7 +72,7 @@ else {
 <body id="0">
  <?php include __DIR__.'/model/navbar.php'; ?>
     
-<div class="container">
+<div class="container" style="min-height:690px;">
     <div id="top" class="row">
         <h1 class='mt-4 col-4'>Tasks</h1>
         <span class="offset-5 d-inline-block mt-4" style="color:<?php echo $_SESSION['taskColor'];?>;font-size:3em;">
@@ -170,7 +170,7 @@ else {
 <script type='text/javascript' src='model/activePost.js'></script>
    
 </div><!--/.container-->
-
+<?php include __DIR__.'/model/footer.php'; ?>
  <script type="text/javascript" src="model/modal.js"></script>
 </body>
 </html>

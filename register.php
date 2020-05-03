@@ -38,7 +38,7 @@ if(isPostRequest()){
     <a class="navbar-brand" href="#">My Planner</a>
 </nav>
     
-<div class="container">
+<div class="container" style="min-height:690px;">
     <form method='POST' class='m-auto w-50'>
         <h1 class='mt-4'>Register</h1>
         <div class="form-group mt-5">
@@ -64,7 +64,7 @@ if(isPostRequest()){
         
    
 </div><!--/.container-->
-
+<?php include __DIR__.'/model/footer.php'; ?>
 
 </body>
 </html>
