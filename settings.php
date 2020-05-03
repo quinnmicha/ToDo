@@ -19,6 +19,7 @@ if( isset($_SESSION["login"])){
         if($action=='changeUser'){
             $newUser = filter_input(INPUT_Post, 'newUsername');
             changeUsername($_SESSION['userID'], $newUsername);
+            $_SESSION['username'] = $newUser;
             header("Location: ../ToDo/settings.php");
         }
         if($action=='changePass'){
@@ -30,6 +31,11 @@ if( isset($_SESSION["login"])){
             $icon = filter_input(INPUT_POST, 'icon');
             $_SESSION['taskIcon']=$icon;
             changeIcon($_SESSION['userID'], $icon);
+        }
+        if($action=='changeTaskColor'){
+            $color = filter_input(INPUT_POST, 'newTaskColor');
+            changeTaskColor($_SESSION['userID'], $color);
+            $_SESSION['taskColor'] = $color;
         }
         
     }

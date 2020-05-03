@@ -135,6 +135,22 @@
         return false;
     }
     
+    function changeTaskColor($userID, $color){
+        global $db;
+        
+        $stmt = $db->prepare("UPDATE ToDo_Login SET taskColor = :color WHERE userID = :userID");
+        
+        $binds = array(
+            ":color"=>$color,
+            ":userID"=>$userID
+        );
+        
+        if($stmt->execute($binds) && $stmt->rowCount()>0){
+            return true;
+        }
+        return false;
+    }
+    
     function getTasksNew($userID){
         global $db;
         
