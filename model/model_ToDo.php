@@ -277,7 +277,9 @@
             array("name"=>"galacticRepublic","value" => "fab fa-galactic-republic"),
             array("name"=>"starFighterAlt","value" => "fas fa-starfighter-alt"),
             array("name"=>"starFighter","value" => "fas fa-starfighter"),
-            array("name"=>"starshipFreighter","value" => "fas fa-starship-freighter")
+            array("name"=>"starshipFreighter","value" => "fas fa-starship-freighter"),
+            array("name"=>"narwhal","value" => "fad fa-narwhal"),
+            array("name"=>"wine-glass-alt","value" => "fas fa-wine-glass-alt")
             
         );
         return $icons;
