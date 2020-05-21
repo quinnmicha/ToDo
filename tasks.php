@@ -119,7 +119,7 @@ else {
                     
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-success"  value="Add Item" id="submitAdd">
+                    <input type="submit" class="btn btn-success" onclick="return addClassCheck()"  value="Add Item" id="submitAdd">
                 </div>
             </form>
         </div>

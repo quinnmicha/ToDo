@@ -59,6 +59,20 @@ function addTaskCheck(){
     else{ return true; }
 }
 
+function addClassCheck(){
+    var errorCheck = 0;
+    if($("#className").val()===""){
+        $("#className").addClass('is-invalid');
+        $("#className").removeClass('is-valid');
+        errorCheck++;
+    }
+    console.log('working');
+  if(errorCheck>0){
+    return false;
+    }
+    else{ return true; }
+}
+
 //Returns true and sends to php if everything is valid
 function checkData(){
     var errorCheck = 0;

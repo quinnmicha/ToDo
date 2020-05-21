@@ -4,7 +4,7 @@
             <input type='hidden' value='<?php echo $class['classID']; ?>' name='classID'>
             <div class="form-group">
                 <div class="form-row">
-                    <input type="hidden" name="action" value ="addClass">
+                    <input type="hidden" name="action" value ="editClass">
                     <label class="control-label" for="className">class Name:</label>
                     <input type="text" class="form-control" style="border-color: #5380b7;" id="className" value="<?php echo $class['className']; ?>" name="className" >
                     <div class="invalid-feedback">Please type your class name.</div>
