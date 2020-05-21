@@ -6,7 +6,7 @@
                 <div class="form-row">
                     <input type="hidden" name="action" value ="editClass">
                     <label class="control-label" for="className">class Name:</label>
-                    <input type="text" class="form-control" style="border-color: #5380b7;" id="className" value="<?php echo $class['className']; ?>" name="className" >
+                    <input type="text" class="form-control" style="border-color: #5380b7;" class="className" value="<?php echo $class['className']; ?>" name="className" >
                     <div class="invalid-feedback">Please type your class name.</div>
                 </div>
             </div>

@@ -66,7 +66,7 @@ function addClassCheck(){
         $("#className").removeClass('is-valid');
         errorCheck++;
     }
-    console.log('working');
+    console.log($("#className").val());
   if(errorCheck>0){
     return false;
     }
