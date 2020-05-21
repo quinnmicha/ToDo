@@ -15,13 +15,13 @@
             }
         }
         
-        $pass=sha1($pass);
+        $newPass=sha1($pass);
         
-        $stmt= $db->prepare('INSERT INTO ToDo_Login (username, password, taskIcon) VALUES (:user, :pass, "fad fa-space-station-moon-alt");');//hard codes deathstar as first icon
+        $stmt= $db->prepare("INSERT INTO `ToDo_Login` (username, `password`, taskIcon, taskColor) VALUES (:user, :pass, 'fad fa-space-station-moon-alt', '#5cb85c');");//hard codes deathstar as first icon
         
         $binds = array(
             ":user"=>$user,
-            ":pass"=>$pass
+            ":pass"=>$newPass
         );
         
         if($stmt->execute($binds) && $stmt->rowCount()>0){
@@ -31,13 +31,14 @@
             return false;
         }
     }
+   
     
         //Used to validate registration
     // so that no two accounts can have the same username
     function getUserNames(){
         global $db;
         
-        $stmt=$db->prepare("SELECT username FROM login_inventory");
+        $stmt=$db->prepare("SELECT username FROM ToDo_Login");
         
         if($stmt->execute() && $stmt->rowCount()>0){
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -53,12 +54,12 @@
     function login($user, $pass){
         global $db;
         
-        $pass = sha1($pass);
+        $newPass = sha1($pass);
         $stmt = $db->prepare("SELECT userID, username, taskColor, taskIcon FROM ToDo_Login WHERE username = :user && password = :pass");   
         
         $binds = array(
             ":user"=>$user,
-            ":pass"=>$pass
+            ":pass"=>$newPass
         );
         
         if($stmt->execute($binds) && $stmt->rowCount()>0){
@@ -83,7 +84,7 @@
             }
         }
         
-        $stmt= $db->prepare('UPDATE ToDo_Login SET username = :user WHERE userID = :userID;');
+        $stmt= $db->prepare("UPDATE ToDo_Login SET username = :user WHERE userID = :userID;");
         
         $binds = array(
             ":user"=>$user,
@@ -104,7 +105,7 @@
         global $db;
         
         
-        $stmt= $db->prepare('UPDATE ToDo_Login SET password = :pass WHERE userID = :userID;');
+        $stmt= $db->prepare("UPDATE ToDo_Login SET password = :pass WHERE userID = :userID;");
         
         $binds = array(
             ":pass"=>$user,

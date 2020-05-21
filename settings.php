@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . '/Model/model_ToDo.php';
+include __DIR__ . '/model/model_ToDo.php';
 
 session_start();
 
