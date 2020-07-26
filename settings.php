@@ -23,8 +23,9 @@ if( isset($_SESSION["login"])){
             header("Location: ../ToDo/settings.php");
         }
         if($action=='changePass'){
-            $newPass = filter_input(INPUT_POST, 'newPass');
-            changePassword($_SESSION['userID'], $newPassword);
+            $newPass = filter_input(INPUT_POST, 'newPassword');
+            echo $newPass;
+            changePassword($_SESSION['userID'], $newPass);
             header("Location: ../ToDo/settings.php");
         }
         if($action=='changeIcon'){
@@ -112,10 +113,10 @@ else {
     <form action="settings.php" id="changePassForm" class="col-8 offset-2 mt-4 d-none" method="POST">
         <input type="hidden" value="changePass" name="action">
         <div class="form-row">
-            <input type="text" class="form-control mb-2" placeholder="New Password" name="newPassword" id="password">
+            <input type="password" class="form-control mb-2" placeholder="New Password" name="newPassword" id="password">
         </div>
         <div class="form-row">
-            <input type="text" class="form-control" placeholder="Confirm New Password" id="confPassword">
+            <input type="password" class="form-control" placeholder="Confirm New Password" id="confPassword">
         </div>
         <div class="form-row">
             <button type="submit" class="btn btn-success col-8 offset-4 mt-2" onclick="return changePasswordCheck()">Change Password</button>

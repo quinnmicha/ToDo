@@ -101,14 +101,14 @@
     
     //Returns true if user is registered
     //else returns false
-    function changePassword($pass){
+    function changePassword($userID, $pass){
         global $db;
-        
+        $newPass=sha1($pass);
         
         $stmt= $db->prepare("UPDATE ToDo_Login SET password = :pass WHERE userID = :userID;");
         
         $binds = array(
-            ":pass"=>$user,
+            ":pass"=>$newPass,
             ":userID"=>$userID
         );
         
