@@ -26,7 +26,7 @@ if( isset($_SESSION["login"])){
             $newPass = filter_input(INPUT_POST, 'newPassword');
             echo $newPass;
             changePassword($_SESSION['userID'], $newPass);
-            header("Location: ../ToDo/settings.php");
+            header("Location: ../ToDo/tasks.php");
         }
         if($action=='changeIcon'){
             $icon = filter_input(INPUT_POST, 'icon');
